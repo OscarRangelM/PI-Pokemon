@@ -2,18 +2,6 @@ const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 
-/* 
-ID. *     x
-Nombre. * x
-Imagen. * x
-Vida. *   x
-Ataque. * x
-Defensa. *x
-Velocidad.x
-Altura.   x
-Peso.     x
-*/
-
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Pokemons', {
