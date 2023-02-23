@@ -6,15 +6,18 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Type', {
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+  },{
+    /* Telling Sequelize not to add the timestamp columns (updatedAt, createdAt). */
+    timestamps: false,
   });
 };

@@ -7,8 +7,8 @@ module.exports = (sequelize) => {
   sequelize.define('Pokemons', {
     id: {
       type: DataTypes.UUID,
-      allowNull: false,
       defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     name: {
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       unique: true, // It has to be unique
     },
     image: {
-      type: DataTypes.JSON, 
+      type: DataTypes.STRING,
       allowNull: false,
     },
     hp: {
@@ -25,11 +25,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     attack: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     defense: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     speed: {
@@ -44,5 +44,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: "N/A",
     }
+  },{
+    /* Telling Sequelize not to add the timestamp columns (updatedAt, createdAt). */
+    timestamps: false, 
   });
 };
