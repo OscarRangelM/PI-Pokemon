@@ -54,7 +54,7 @@ Debe crear un pokemon en la base de datos, y este debe estar relacionado con sus
 */
 
 router.post('/', async (req, res) => {
-    const { name, image, hp, attack, defense } = req.body
+    const { name, image, hp, attack, defense, types } = req.body
 
     try {
         // If any of the required data does not exist.
@@ -62,10 +62,19 @@ router.post('/', async (req, res) => {
 
         // If the pokemon is in the database or in the api it will send us an error.
         let pokeFinder = await findPokeApi(name);
-        if (pokeFinder === name.toLowerCase()) {
+        let pName = pokeFinder !== null? pokeFinder.name : pokeFinder;
+        if (pName === name.toLowerCase()) {
             return res.status(400).json(`This pokemon already exists in the database.`);
         }
         const newPokemon = await Pokemons.create(req.body);
+
+        const typePokemon = await Type.findAll({
+            where: {
+                name: types,
+            }
+        });
+        newPokemon.addType(typePokemon);
+
         res.status(201).send(newPokemon);
 
 
