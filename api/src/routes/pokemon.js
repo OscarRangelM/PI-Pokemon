@@ -3,29 +3,63 @@ const { Pokemons, Type } = require('../db.js');
 const router = Router();
 const { findPokeApi, findIdApi } = require('./function');
 
-// GET ALL Router
+// GET Querys
 router.get('/', async (req, res) => {
-    const allPokemons = await Pokemons.findAll();
-    if (allPokemons.length < 1) return res.status(400).json({ msg: 'No pokemon found in the database' });
-    res.json(allPokemons);
-});
 
-// GET ID Router
-router.get('/:idPokemon', async (req, res) => {
     try {
-        const { idPokemon } = req.params
+        let { name } = req.query;
+        console.log('query');
 
-        const pokeIdApi = await findIdApi(idPokemon);
-        console.log(pokeIdApi);
-        if(pokeIdApi) return res.status(200).send(pokeIdApi); 
+        if (name) {
+            const pokeNameApi = await findIdApi(name);
+            if (pokeNameApi) return res.status(200).send(pokeNameApi);
 
-        const pokeId = await Pokemons.findAll({
+            const pokeNameQuery = await Pokemons.findAll({
+                where: {
+                    name: name.toLowerCase(),
+                },
+                include: {
+                    model: Type,
+                    attributes: ['name'],
+                }
+            });
+
+            (pokeNameQuery.length > 0) ? res.status(200).send(pokeNameQuery) : res.status(400).json(`The pokemon ${name.toLowerCase()} is not found in the database`);
+        }
+
+        console.log('all');
+        const allPokemons = await Pokemons.findAll({
             include: {
                 model: Type,
                 attributes: ['name'],
-                through: {
-                    attributes: [],
-                },
+            }
+        });
+        if (allPokemons.length < 1) return res.status(400).json({ msg: 'No pokemon found in the database' });
+        res.json(allPokemons);
+
+    } catch (error) {
+        return error
+    }
+
+});
+
+
+
+// GET ID Router
+router.get('/:idPokemon', async (req, res) => {
+    
+    try {
+        const { idPokemon } = req.params
+        const pokeIdApi = await findIdApi(idPokemon);
+        if (pokeIdApi) return res.status(200).send(pokeIdApi);
+
+        const pokeId = await Pokemons.findAll({
+            where: {
+                id: idPokemon,
+            },
+            include: {
+                model: Type,
+                attributes: ['name'],
             }
         });
 
@@ -36,26 +70,6 @@ router.get('/:idPokemon', async (req, res) => {
 
 });
 
-/* 
-GET | /pokemons/name?="..."
-Esta ruta debe obtener todos aquellos pokemons que coinciden con el nombre recibido por query.
-Debe poder buscarlo independientemente de mayúsculas o minúsculas.
-Si no existe el pokemon, debe mostrar un mensaje adecuado.
-Debe buscar tanto los de la API como los de la base de datos.
-*/
-
-// GET Querys
-router.get('/name?="..."', async (req, res) => {
-    let name = req.query
-    const pokeName = Pokemons.findAll({
-        where: {
-            /* Comparing the name of the pokemon with the name of the pokemon in the database. */
-            name: name.toLowerCase()
-        }
-    });
-    if (pokeName.length < 1) return res.status(400).json(`The pokemon ${name} does not exist in the database.`);
-    res.send(pokeName);
-});
 
 // POST router
 router.post('/', async (req, res) => {
