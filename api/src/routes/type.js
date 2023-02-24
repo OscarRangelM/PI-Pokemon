@@ -1,21 +1,32 @@
 const { Router } = require('express');
 const { Type } = require('../db');
 const router = Router();
+const axios = require('axios');
 
-/* 
-GET | /types
-Obtiene un arreglo con todos los tipos de pokemones.
-En una primera instancia, cuando la base de datos este vacía, deberás guardar todos los tipos que encuentres en la API.
-Estos deben ser obtenidos de la API (se evaluará que no haya hardcodeo). Luego de obtenerlos de la API, deben ser guardados en la base de datos para su posterior consumo desde allí.
-*/
+// Type Get
+router.get('/', async (req, res) => {
+    try {
+        const pokeTypes = await Type.findAll();
+        console.log(pokeTypes)
 
-router.get('/types', async (req, res) => {
-    const pokeTypes = Type.findAll();
-
-    if (pokeTypes.length < 1) {
-        // Buscamos los typos de datos de la api y los guardamos en la base de datos.
-    } else {
-        res.send(pokeTypes);
+        if (pokeTypes.length < 1) {
+            const typesApi = await axios.get('https://pokeapi.co/api/v2/type')
+                .then(result => {
+                    return result.data.results;
+                })
+                .catch(error => null);
+            console.log(typesApi.length);
+            typesApi.map( async (e) => {
+                let newType = await Type.create({
+                    name: e.name.toLowerCase(),
+                })
+            } );
+            return res.send('Nuevos tipos agregados');
+        } else {
+            res.send(pokeTypes);
+        }
+    } catch (error) {
+        res.status(400).json(error);
     }
 
 })
