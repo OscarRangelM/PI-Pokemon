@@ -1,4 +1,5 @@
 import styles from './detail.module.css';
+import React from 'react';
 
 /* 
 DETAIL PAGE | en esta vista se deberá mostrar toda la información específica de un pokemon:
@@ -15,6 +16,8 @@ Peso (si tiene).
 Tipo. */
 export default function Detail() {
     return (
-        <div className={styles.divDetail} ></div>
+        <div className={styles.divDetail} >
+            <h1>Details page</h1>
+        </div>
     );
 }

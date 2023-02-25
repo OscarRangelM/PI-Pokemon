@@ -1,4 +1,5 @@
 import styles from './home.module.css';
+import React from 'react';
 
 
 /* 
@@ -12,9 +13,19 @@ Tipos.
 Cuando se le hace click a una Card deberá redirigir al detalle de ese pokemon específico.
 Botones/Opciones para filtrar por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
 Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.
-Paginado: el listado de pokemones se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 12 pokemones por página. */
+Paginado: el listado de pokemones se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 12 pokemones por página. 
+
+HOME PAGE
+Aquí vas a renderizar los resultados obtenidos; cada uno en una card. Además, existen otros elementos necesarios:
+Paginado: con la cantidad de elementos mencionados en el README).
+Search: buscar por algún criterio. Lee en el README si la búsqueda debe ser exacta o no.
+Filtros: los resultados deben estar paginados.
+Ordenamiento: debe funcionar combinado con el/los filtro/s.
+*/
 export default function Home() {
     return (
-        <div className={styles.divHome} ></div>
+        <div className={styles.divHome} >
+            <h1>Home page</h1>
+        </div>
     );
 }
