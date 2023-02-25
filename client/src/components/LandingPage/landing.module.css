@@ -1,27 +1,78 @@
+@font-face {
+    font-family: 'PokeFont';
+    src: url('./pokefont/Pokemon\ Hollow.ttf');
+}
+
+@font-face {
+    font-family: 'PokeFont-b';
+    src: url('./pokefont/Pokemon\ Solid.ttf');
+}
+
 .divLanding {
-    background-image: url('../../image/landingPW.jpg');
+    display: flex;
+    /* background-image: url('../../image/landingPW.jpg'); */
+    background: linear-gradient( 
+        #D90429 0%, #D90429 50%, 
+        #EDF2F4 50%, #EDF2F4 100%);
     background-size: cover;
     height: 100vh;
     width: 100vw;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.divLanding::before, .divLanding::after{
+    content: '';
     position: absolute;
+}
+
+.divLanding::before {
+    background-color: #2B2D42;
+    width: 100%;
+    height: 10vh;
+}
+
+.divLanding::after {
+    background-color: #EDF2F4;
+    border-radius: 100%;
+    width: 15vh;
+    height: 15vh;
+    z-index: 1;
+    box-shadow: 0 0 0 5vh #2B2D42;
 }
 
 .divGlass {
     position: relative;
-    height: 50vh;
+    height: 90vh;
     width: 50vw;
-    top: 50vh;
-    left: 50%;
-    color: #fff;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
+    /* color: #fff; */
+     /* border-radius: 20px;
     background-color: rgb(28, 43, 45, 0.25);
     -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);  */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    z-index: 10;
+    padding-bottom: 40px;
+    /* padding-top: 0; */
+}
+
+.divGlass > h1{
+    position: relative;
+    color: #ffcc03;
+    font-family: 'PokeFont-b';
+    font-size: 60px;
+}
+
+.divGlass > h1::before{
+    position: absolute;
+    content: 'Pokedex';
+    color: #3d56a3;
+    font-family: 'PokeFont';
+    font-size: 60px;
 }
 
 .bttn {

@@ -1,5 +1,6 @@
 import styles from './landing.module.css';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 /* LANDING PAGE | deberás crear una página de inicio o bienvenida con:
 
@@ -9,8 +10,10 @@ export default function Landing() {
     return (
         <div className={styles.divLanding} >
             <div className={styles.divGlass}>
-                <h1>Welcome to my PI based on the pokeApi</h1>
-                <button className={styles.bttn}>Go to Home</button>
+                <h1>Pokedex</h1>
+                <NavLink to="/home">
+                    <button className={styles.bttn}>Go Home</button>
+                </NavLink>
             </div>
         </div>
     );
