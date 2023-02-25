@@ -1,5 +1,6 @@
 import styles from './form.module.css';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // Validations
 // import { validation } from './validation.js';
@@ -32,7 +33,34 @@ Al finalizar la creación limpia los campos de tu formulario.
 export default function Form(props) {
     return (
         <div className={styles.divForm} >
-            <h1>Form page</h1>
+            <nav className={styles.nav} >
+                <NavLink to="../home" >
+                    <button>Back Home</button>
+                </NavLink>
+                <h1>Form page</h1>
+            </nav>
+            <form className={styles.form} >
+                <label htmlFor="inputName">Name</label>
+                <input type='text' placeholder='Name' />
+                <label htmlFor="inputImage">Image</label>
+                <input type='text' placeholder='URL of image' />
+                <label htmlFor="inputHP">HP:</label>
+                <input type="number" placeholder='HP' />
+                <label htmlFor="inputAttack">Attack</label>
+                <input type='number' placeholder='Attack' />
+                <label htmlFor="inputDefense">Defense</label>
+                <input type='number' placeholder='Defense' />
+                <label htmlFor="inputSpeed">Speed</label>
+                <input type='number' placeholder='Speed' />
+                <label htmlFor="inputHeight">Height</label>
+                <input type='number' placeholder='Height' />
+                <label htmlFor="inputWeight">Weight</label>
+                <input type='number' placeholder='Weight' />
+                <label htmlFor="inputTypes">Types</label>
+                <input type='select' placeholder='Types-1' ></input>
+                <input type='select' placeholder='Types-2' ></input>
+                <input type='submit' />
+            </form>
         </div>
     );
 }
