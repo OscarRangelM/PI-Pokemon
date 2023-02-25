@@ -8,7 +8,10 @@ Botón para ingresar a la home page. */
 export default function Landing() {
     return (
         <div className={styles.divLanding} >
-            <h1>Landing Page</h1>
+            <div className={styles.divGlass}>
+                <h1>Welcome to my PI based on the pokeApi</h1>
+                <button className={styles.bttn}>Go to Home</button>
+            </div>
         </div>
     );
 }

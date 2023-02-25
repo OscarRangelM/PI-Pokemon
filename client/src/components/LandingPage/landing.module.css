@@ -1,3 +1,35 @@
-.divLanding{
+.divLanding {
+    background-image: url('../../image/landingPW.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+.divGlass {
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    top: 50vh;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    background-color: rgb(28, 43, 45, 0.25);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bttn {
+    border: white;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
     background-color: red;
+    color: white;
+    font-weight: bolder;
 }
