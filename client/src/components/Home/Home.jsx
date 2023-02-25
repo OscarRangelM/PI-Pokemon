@@ -1,5 +1,7 @@
 import styles from './home.module.css';
 import React from 'react';
+import Card from '../Card/Card.jsx';
+import { NavLink } from 'react-router-dom';
 
 
 /* 
@@ -22,10 +24,72 @@ Search: buscar por algún criterio. Lee en el README si la búsqueda debe ser ex
 Filtros: los resultados deben estar paginados.
 Ordenamiento: debe funcionar combinado con el/los filtro/s.
 */
-export default function Home() {
+export default function Home(props) {
+
+    const { characters } = props;
+
     return (
         <div className={styles.divHome} >
-            <h1>Home page</h1>
+            <nav>
+                <lu>
+                    <li>
+                        <input
+                            name='SearchInput'
+                            type='search'
+                            placeholder='Ex: Charmander'
+                            className={styles.inpSearch}
+                        />
+                    </li>
+                    <li>
+                        <input
+                            name="SelectInput"
+                            type='select'
+                            placeholder='Type...'
+                            className={styles.inpSelect}>
+                        </input>
+                    </li>
+                    <li>
+                        <button type='button'
+                            className={styles.filterAscendingAlf}>
+                            ascending alpf
+                        </button>
+                    </li>
+                    <li>
+                        <button type='button'
+                            className={styles.filterFallingAlf}>
+                            falling alpf
+                        </button>
+                    </li>
+                    <li>
+                        <button type='button'
+                            className={styles.filterAscendingAttk}>
+                            ascending attk
+                        </button>
+                    </li>
+                    <li>
+                        <button type='button'
+                            className={styles.filterFallingAttk}>
+                            falling attk
+                        </button>
+                    </li>
+                </lu>
+                <NavLink to="/form">
+                    <button>Create Pokemon</button>
+                </NavLink>
+            </nav>
+
+            <div className={styles.divCards}>
+                {/* {characters.map((c) => {
+                    return (<Card
+                        id={c.id}
+                        name={c.name}
+                        species={c.species}
+                        gender={c.gender}
+                        image={c.image}
+                        onClose={() => props.onClose(c.id)}
+                    />)
+                })} */}
+            </div>
         </div>
     );
 }

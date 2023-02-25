@@ -1,3 +1,9 @@
 .divHome{
     background-color: blue;
 }
+
+.divCards{
+    width: 100vw;
+    height: 60vh;
+    background-color: limegreen;
+}
