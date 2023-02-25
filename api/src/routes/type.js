@@ -7,7 +7,6 @@ const axios = require('axios');
 router.get('/', async (req, res) => {
     try {
         const pokeTypes = await Type.findAll();
-        console.log(pokeTypes)
 
         if (pokeTypes.length < 1) {
             const typesApi = await axios.get('https://pokeapi.co/api/v2/type')
@@ -15,12 +14,11 @@ router.get('/', async (req, res) => {
                     return result.data.results;
                 })
                 .catch(error => null);
-            console.log(typesApi.length);
-            typesApi.map( async (e) => {
+            typesApi.map(async (e) => {
                 let newType = await Type.create({
                     name: e.name.toLowerCase(),
                 })
-            } );
+            });
             return res.send('Nuevos tipos agregados');
         } else {
             res.send(pokeTypes);
