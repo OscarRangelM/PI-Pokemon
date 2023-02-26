@@ -1,6 +1,6 @@
 import styles from './home.module.css';
 import React from 'react';
-import Card from '../Card/Card.jsx';
+// import Card from '../Card/Card.jsx';
 import { NavLink } from 'react-router-dom';
 
 
@@ -26,12 +26,12 @@ Ordenamiento: debe funcionar combinado con el/los filtro/s.
 */
 export default function Home(props) {
 
-    const { characters } = props;
+    // const { characters } = props;
 
     return (
         <div className={styles.divHome} >
-            <nav>
-                <lu>
+            <nav className={styles.navSearch}>
+                <ul className={styles.navUl}>
                     <li>
                         <input
                             name='SearchInput'
@@ -39,6 +39,7 @@ export default function Home(props) {
                             placeholder='Ex: Charmander'
                             className={styles.inpSearch}
                         />
+                        <button>Search</button>
                     </li>
                     <li>
                         <input
@@ -72,7 +73,7 @@ export default function Home(props) {
                             falling attk
                         </button>
                     </li>
-                </lu>
+                </ul>
                 <NavLink to="/form">
                     <button>Create Pokemon</button>
                 </NavLink>
