@@ -38,7 +38,6 @@
     border-radius: 100%;
     width: 15vh;
     height: 15vh;
-    z-index: 1;
     box-shadow: 0 0 0 5vh #2B2D42;
 }
 
@@ -46,41 +45,29 @@
     position: relative;
     height: 90vh;
     width: 50vw;
-    /* color: #fff; */
-     /* border-radius: 20px;
-    background-color: rgb(28, 43, 45, 0.25);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);  */
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    z-index: 10;
     padding-bottom: 40px;
-    /* padding-top: 0; */
 }
 
-.divGlass > h1{
-    position: relative;
-    color: #ffcc03;
-    font-family: 'PokeFont-b';
-    font-size: 60px;
-}
-
-.divGlass > h1::before{
-    position: absolute;
-    content: 'Pokedex';
-    color: #3d56a3;
-    font-family: 'PokeFont';
-    font-size: 60px;
+.pokeLogo{
+    padding-top: 5vh;
+    height: 20vh;
 }
 
 .bttn {
-    border: white;
+    border: none;
     height: 35px;
     width: 100px;
     border-radius: 5px;
-    background-color: red;
+    background-color: rgb(233, 0, 0);
     color: white;
     font-weight: bolder;
+    box-shadow: 1px 1px #2B2D42;
+}
+
+.bttn:active{
+    box-shadow: inset 1px 1px #2B2D42;
 }

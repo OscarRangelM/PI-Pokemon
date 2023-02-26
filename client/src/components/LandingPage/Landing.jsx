@@ -1,6 +1,7 @@
 import styles from './landing.module.css';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PokemonLogo from '../../image/PokemonLogo.png'
 
 /* LANDING PAGE | deberás crear una página de inicio o bienvenida con:
 
@@ -10,7 +11,7 @@ export default function Landing() {
     return (
         <div className={styles.divLanding} >
             <div className={styles.divGlass}>
-                <h1>Pokedex</h1>
+                <img src={PokemonLogo} alt="PokemonLogo" className={styles.pokeLogo} />
                 <NavLink to="/home">
                     <button className={styles.bttn}>Go Home</button>
                 </NavLink>
