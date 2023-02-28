@@ -1,7 +1,11 @@
 import styles from './home.module.css';
 import React from 'react';
-// import Card from '../Card/Card.jsx';
+import Card from '../Card/Card.jsx';
 import Nav from '../Nav/Nav.jsx'
+
+// Use selector remplaza mapStateToPorps
+import { useState, useEffect } from 'react';
+// import { }
 
 /* 
 HOME PAGE | la página principal de tu SPA debe contener:
@@ -23,23 +27,25 @@ Search: buscar por algún criterio. Lee en el README si la búsqueda debe ser ex
 Filtros: los resultados deben estar paginados.
 Ordenamiento: debe funcionar combinado con el/los filtro/s.
 */
-export default function Home(props) {
+export default function Home() {
 
-    // const { characters } = props;
+    const pokemon 
 
     return (
         <div className={styles.divHome} >
             <Nav />
             <ul>
-            {/* <div className={styles.divCards}>
-                {characters.map((c) => {
+            <div className={styles.divCards}>
+                {pokemon.map((c) => {
                     return (<Card
+                        id={c.id}
                         image={c.image}
-                        name={c.name}
-                        onClose={() => props.onClose(c.id)}
+                        pokeName={c.name}
+                        types={c.Types}
+                        // onClose={() => props.onClose(c.id)}
                     />)
                 })}
-            </div> */}
+            </div>
             </ul>
         </div>
     );
