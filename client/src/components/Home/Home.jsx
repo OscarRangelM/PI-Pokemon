@@ -33,16 +33,19 @@ export default function Home() {
     const dispatch = useDispatch();
     const pokemon = useSelector(state => state.pokemon);
 
+    // console.log(pokemon);
+
     useEffect(() => {
         dispatch(getPokemons())
     }, [dispatch])
+
 
     return (
         <div className={styles.divHome} >
             <Nav />
             <ul>
                 <div className={styles.divCards}>
-                    {pokemon.map((c) => {
+                    {( typeof(pokemon) === 'object' && pokemon.length !== 0 )? pokemon.map((c) => {
                         return (<Card
                             key={c.id}
                             id={c.id}
@@ -51,7 +54,7 @@ export default function Home() {
                             types={c.Types}
                         // onClose={() => props.onClose(c.id)}
                         />)
-                    })}
+                    }) : (<h1>Oops! there is no pokemon around here</h1> ) }
                 </div>
             </ul>
         </div>

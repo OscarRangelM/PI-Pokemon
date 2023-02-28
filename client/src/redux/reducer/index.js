@@ -20,10 +20,10 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_POKEMONS_API:
-            // let allPokemonAPI = [];
-            // for(let i = 0; i < 12; i++){
-                // allPokemonAPI = [...state.pokemon, action.payload]
-            // }
+            let allPokemonAPI = [];
+            for(let i = 0; i < 12; i++){
+                allPokemonAPI = [...state.pokemon, action.payload]
+            }
             return {
                 ...state,
                 pokemon: action.payload,

@@ -17,13 +17,13 @@ export const getPokemons = () => {
         try {
             const pokemons = await axios.get('http://localhost:3001/pokemons')
                 .then(result => result.data)
-                .catch(error => console.log('Aqui hay un error'));
+                .catch(error => console.log(`Aqui hay un error, actions getPokemons pokemons , ${error}`));
             return disptach({
                 type: GET_POKEMONS,
                 payload: pokemons,
             });
         } catch (error) {
-            console.log('Aqui hay un error')
+            console.log(`Aqui hay un error, actions getPokemons, ${error}`)
         };
     };
 

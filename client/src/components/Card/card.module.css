@@ -1,7 +1,47 @@
+/* *{
+    border: 1px solid black;
+} */
+
 .pokemonCard{
-    border: 1px solid greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 3px;
+    flex-direction: column;
+    position: relative;
+    background-color: #EDF2F4;
+    /* border: 1px solid greenyellow; */
     width: 200px;
     margin-top: 20px;
     border-radius: 20px;
     z-index: 10;
+}
+
+.favButton{
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background-color: transparent;
+    border: 1px solid #8D99AE;
+    border-radius: 5px;
+}
+
+.pokeImg{
+    max-width: 195px;
+    
+}
+
+.pokeName{
+    color: #2B2D42;
+}
+
+.pokeTypes{
+    display: flex;
+    border: 1px solid black;
+    height: 50%;
+}
+
+.stylesType{
+    border: 1px solid black;
+    /* font- */
 }

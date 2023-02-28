@@ -36,21 +36,22 @@ export default function Card(props) {
         <div className={styles.pokemonCard} >
             {
                 favorite ? 
-                (<button onClick={handleFavorite}>#11088</button> ) :
-                (<button onClick={handleFavorite}>&#9734</button>)
+                (<button onClick={handleFavorite} className={styles.favButton}>⭐</button> ) :
+                (<button onClick={handleFavorite} className={styles.favButton}>☆</button>)
             }
             <img src={props.image} alt={props.name} className={styles.pokeImg} />
-            <h2 className={styles.pokeName}>Name: {props.pokeName}</h2>
-            <h2 className= {styles.pokeTypes}>Type(s): 
+            <h2 className={styles.pokeName}>Name: <br/> {props.pokeName}</h2>
+            <div className= {styles.pokeTypes}><h2>Type(s):</h2> 
             {props.types.map(result => {
                 console.log(result);
                 return (<p className={styles.stylesType} key={result.TypePokemon.TypeId
                 }>{result.name}</p>);
             })}
-            </h2>
-            <Link to={`/detail/${props.idPokemon}`}>
+            </div >
+            <Link to={`/detail/${props.id}`}>
                 <h2 className={styles.bttnDetails}>More details...</h2>
             </Link>
         </div>
     )
 }
+// 
