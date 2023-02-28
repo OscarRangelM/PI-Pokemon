@@ -43,7 +43,8 @@ const rootReducer = (state = initialState, action) => {
 
         case FIND_POKEMON:
             return {
-                
+                ...state,
+                pokemonDetail: action.payload,
             };
 
         case FILTER_AZ:

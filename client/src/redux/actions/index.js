@@ -76,8 +76,23 @@ export const deleteFavorite = (id) => {
     }
 }
 
-export const findPokemon = () => {
-    return {}
+export const findPokemon = (id) => {
+    return async (disptach) => {
+        try {
+            const pokemonDetails = await axios.get(`http://localhost:3001/pokemons/${id}`)
+                .then(result => result.data)
+                .catch(error => error);
+            // console.log(pokemonDetails)
+            // id++;
+            return disptach({
+                type: FIND_POKEMON,
+                payload: pokemonDetails,
+            })
+        } catch (error) {
+            return error
+        }
+    }
+
 }
 
 export const createPokemon = (payload) => {
