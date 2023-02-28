@@ -3,8 +3,9 @@ import React from 'react';
 import Card from '../Card/Card.jsx';
 import Nav from '../Nav/Nav.jsx'
 
-// Use selector remplaza mapStateToPorps
+import { getPokemons } from '../../redux/actions/index.js'
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 // import { }
 
 /* 
@@ -29,23 +30,29 @@ Ordenamiento: debe funcionar combinado con el/los filtro/s.
 */
 export default function Home() {
 
-    const pokemon 
+    const dispatch = useDispatch();
+    const pokemon = useSelector(state => state.pokemon);
+
+    useEffect(() => {
+        dispatch(getPokemons())
+    }, [dispatch])
 
     return (
         <div className={styles.divHome} >
             <Nav />
             <ul>
-            <div className={styles.divCards}>
-                {pokemon.map((c) => {
-                    return (<Card
-                        id={c.id}
-                        image={c.image}
-                        pokeName={c.name}
-                        types={c.Types}
+                <div className={styles.divCards}>
+                    {pokemon.map((c) => {
+                        return (<Card
+                            key={c.id}
+                            id={c.id}
+                            image={c.image}
+                            pokeName={c.name}
+                            types={c.Types}
                         // onClose={() => props.onClose(c.id)}
-                    />)
-                })}
-            </div>
+                        />)
+                    })}
+                </div>
             </ul>
         </div>
     );

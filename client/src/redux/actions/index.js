@@ -31,14 +31,14 @@ export const getPokemons = () => {
 
 // console.log(getPokemons);
 
-export const getPokemonsAPI = (id = 0) => {
+export const getPokemonsAPI = (id) => {
     return async (disptach) => {
         try {
-            const pokemonAPI = await axios.get(`http://localhost:3001/pokemons/${id}`)
+            const pokemonAPI = await axios.get(`http://localhost:3001/pokemons/15`)
                 .then(result => result.data)
                 .catch(error => error);
             console.log(id)
-            id++;
+            // id++;
             return disptach({
                 type: GET_POKEMONS_API,
                 payload: pokemonAPI,

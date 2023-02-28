@@ -11,10 +11,7 @@ import {
 } from "../actions/index.js";
 
 const initialState = {
-    pokemon: {
-        pokemonAPI: [],
-        pokemonDB: [],
-    },
+    pokemon: [],
     types: [],
     pokemonDetail: {},
     pkmnFavorites: [],
@@ -23,13 +20,13 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_POKEMONS_API:
-            let allPokemonDB = [];
-            for(let i = 0; i < 12; i++){
-                allPokemonDB = [...state.pokemon.pokemonDB, action.payload]
-            }
+            // let allPokemonAPI = [];
+            // for(let i = 0; i < 12; i++){
+                // allPokemonAPI = [...state.pokemon, action.payload]
+            // }
             return {
                 ...state,
-                pokemon: allPokemonDB,
+                pokemon: action.payload,
             };
 
         case GET_POKEMONS:

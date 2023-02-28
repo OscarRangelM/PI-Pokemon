@@ -97,7 +97,7 @@ router.post('/', async (req, res) => {
         res.status(201).send(newPokemon);
 
     } catch (error) {
-        res.status(400).json(`This pokemon already exists in the database.`);
+        res.status(400).json(`This pokemon already exists in the database. ${error}`);
     }
 });
 
