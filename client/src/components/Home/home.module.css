@@ -1,3 +1,17 @@
+body{
+    background-color: #D90429;
+}
+
+body::-webkit-scrollbar{
+    background-color: #1B354E;
+    width: 7px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: rgba(211, 211, 211, 0.308);
+    border-radius: 5px;
+}
+
 .divHome{
     border: 1px solid black;
     background-color: #5b5c5e;

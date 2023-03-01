@@ -15,18 +15,18 @@ export default function Card(props) {
     const [favorite, setFavorite] = useState(false);
 
     function handleFavorite() {
-        if(favorite) {
+        if (favorite) {
             setFavorite(false);
             dispatch(deleteFavorite(props.id));
-        }else {
+        } else {
             setFavorite(true);
             dispatch(addFavorite(props));
         }
     }
 
-    useEffect(() =>{
-        allFavorites.forEach( fav =>{
-            if ( fav.id === props.id) {
+    useEffect(() => {
+        allFavorites.forEach(fav => {
+            if (fav.id === props.id) {
                 setFavorite(true);
             }
         });
@@ -35,21 +35,21 @@ export default function Card(props) {
     return (
         <div className={styles.pokemonCard} >
             {
-                favorite ? 
-                (<button onClick={handleFavorite} className={styles.favButton}>⭐</button> ) :
-                (<button onClick={handleFavorite} className={styles.favButton}>☆</button>)
+                favorite ?
+                    (<button onClick={handleFavorite} className={styles.favButton}>⭐</button>) :
+                    (<button onClick={handleFavorite} className={styles.favButton}>☆</button>)
             }
             <img src={props.image} alt={props.name} className={styles.pokeImg} />
-            <h2 className={styles.pokeName}>Name: <br/> {props.pokeName}</h2>
-            <div className= {styles.pokeTypes}><h2>Type(s):</h2> 
-            {props.types.map(result => {
-                console.log(result);
-                return (<p className={styles.stylesType} key={result.TypePokemon.TypeId
-                }>{result.name}</p>);
-            })}
+            <h3 className={styles.pokeName}>Name: {props.pokeName}</h3>
+            <div className={styles.pokeTypes}><h3>Type(s):</h3>
+                {props.types.map(result => {
+                    console.log(result);
+                    return (<p className={styles.stylesType} key={result.TypePokemon.TypeId
+                    }>{result.name}</p>);
+                })}
             </div >
-            <Link to={`/detail/${props.id}`}>
-                <h2 className={styles.bttnDetails}>More details...</h2>
+            <Link to={`/detail/${props.id}`} className={styles.bttnDetails}>
+                <h3 >More details...</h3>
             </Link>
         </div>
     )
