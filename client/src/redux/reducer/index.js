@@ -7,7 +7,7 @@ import {
     FIND_POKEMON,
     CREATE_POKEMON,
     FILTER_AZ,
-    FILTER_DB,
+    FILTER_ATTK,
 } from "../actions/index.js";
 
 const initialState = {
@@ -20,10 +20,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_POKEMONS_API:
-            let allPokemonAPI = [];
-            for(let i = 0; i < 12; i++){
-                allPokemonAPI = [...state.pokemon, action.payload]
-            }
             return {
                 ...state,
                 pokemon: action.payload,
@@ -50,7 +46,7 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_AZ:
             return {};
 
-        case FILTER_DB:
+        case FILTER_ATTK:
             return {};
 
         case ADD_FAVORITE:

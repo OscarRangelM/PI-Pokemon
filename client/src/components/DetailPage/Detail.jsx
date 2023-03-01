@@ -18,10 +18,7 @@ export default function Detail() {
         dispatch(findPokemon(detailId));
     }, [dispatch, detailId]);
 
-    // const {name} = state.type
-    const arrType = (typeof(state.Types) === 'undefined') ? state.type : state.Types
-    // console.log(`State ${state.Types}`);
-    console.log(arrType)
+    const arrType =  state.Types
 
     return (
         <div className={styles.divDetail} >

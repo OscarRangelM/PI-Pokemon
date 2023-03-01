@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 
 export default function Card(props) {
     
-
     let dispatch = useDispatch();
     const allFavorites = useSelector(state => state.pkmnFavorites)
 
@@ -44,9 +43,8 @@ export default function Card(props) {
             <h3 className={styles.pokeName}>Name: {props.pokeName}</h3>
             <div className={styles.pokeTypes}><h3>Type(s):</h3>
                 {props.types.map(result => {
-                    console.log(result);
-                    return (<p className={styles.stylesType} key={result.TypePokemon.TypeId
-                    }>{result.name}</p>);
+                    // console.log(result);
+                    return (<p className={styles.stylesType} key={result.id} >{result.name}</p>);
                 })}
             </div >
             <Link to={`/detail/${props.id}`} className={styles.bttnDetails}>

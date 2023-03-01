@@ -21,7 +21,7 @@ const findIdApi = async (idApi) => {
             speed: pokeIdApi.stats[5].base_stat,
             height: pokeIdApi.height,
             weight: pokeIdApi.weight,
-            type: pokeIdApi.types.map((result) => {
+            Types: pokeIdApi.types.map((result) => {
                 return {
                     name: result.type.name,
                 }

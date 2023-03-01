@@ -3,7 +3,7 @@ import React from 'react';
 import Card from '../Card/Card.jsx';
 
 
-import { getPokemons } from '../../redux/actions/index.js'
+import { getPokemons, getPokemonsAPI } from '../../redux/actions/index.js'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,13 +15,11 @@ Sector en el que se vea un listado de cards con los pokemones. Al iniciar deber�
 Imagen.
 Nombre.
 Tipos.
-Cuando se le hace click a una Card deberá redirigir al detalle de ese pokemon específico.
+
 Botones/Opciones para filtrar por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
 Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.
 Paginado: el listado de pokemones se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 12 pokemones por página. 
 
-HOME PAGE
-Aquí vas a renderizar los resultados obtenidos; cada uno en una card. Además, existen otros elementos necesarios:
 Paginado: con la cantidad de elementos mencionados en el README).
 Search: buscar por algún criterio. Lee en el README si la búsqueda debe ser exacta o no.
 Filtros: los resultados deben estar paginados.
@@ -32,12 +30,11 @@ export default function Home() {
     const dispatch = useDispatch();
     const pokemon = useSelector(state => state.pokemon);
 
-    // console.log(pokemon);
+    console.log(typeof(pokemon[0]))
 
     useEffect(() => {
-        dispatch(getPokemons())
+        dispatch(getPokemonsAPI())
     }, [dispatch])
-
 
     return (
         <div className={styles.divHome} >

@@ -8,7 +8,7 @@ export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 export const FIND_POKEMON = 'FIND_POKEMON';
 export const FILTER_AZ = 'FILTER_AZ';
-export const FILTER_DB = 'FILTER_DB';
+export const FILTER_ATTK = 'FILTER_ATTK';
 export const CREATE_POKEMON = 'CREATE_POKEMON';
 
 
@@ -31,17 +31,20 @@ export const getPokemons = () => {
 
 // console.log(getPokemons);
 
-export const getPokemonsAPI = (id) => {
+export const getPokemonsAPI = () => {
     return async (disptach) => {
         try {
-            const pokemonAPI = await axios.get(`http://localhost:3001/pokemons/15`)
-                .then(result => result.data)
-                .catch(error => error);
-            console.log(id)
-            // id++;
+            let allPokemonAPI = []
+            for (let i = 1; i <= 40; i++) {
+
+                const pokemonAPI = await axios.get(`http://localhost:3001/pokemons/${i}`)
+                    .then(result => result.data)
+                    .catch(error => error);
+                allPokemonAPI.push(pokemonAPI)
+            }
             return disptach({
                 type: GET_POKEMONS_API,
-                payload: pokemonAPI,
+                payload: allPokemonAPI,
             })
         } catch (error) {
             return error
