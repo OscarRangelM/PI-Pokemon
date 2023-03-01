@@ -1,6 +1,5 @@
 import styles from './nav.module.css';
 import React from 'react';
-// import Card from '../Card/Card.jsx';
 import { NavLink } from 'react-router-dom';
 
 export default function Nav(props) {
@@ -16,7 +15,7 @@ export default function Nav(props) {
                             placeholder='Ex: Charmander'
                             className={styles.inpSearch}
                         />
-                        <button>Search</button>
+                        <button className={styles.searchBttn}>Search</button>
                     </li>
                     <li>
                         <select
@@ -50,9 +49,12 @@ export default function Nav(props) {
                             DB
                         </button>
                     </li>
+                    <li>
+                        <input type="button" value='Favorites' className={styles.favoritesBttn}/>
+                    </li>
                 </ul>
                 <NavLink to="/form">
-                    <button>Create Pokemon</button>
+                    <button className={styles.formBttn} >Create Pokemon</button>
                 </NavLink>
             </nav>
         </div>
