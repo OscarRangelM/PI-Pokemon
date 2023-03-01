@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 export default function Card(props) {
+    
 
     let dispatch = useDispatch();
     const allFavorites = useSelector(state => state.pkmnFavorites)
@@ -31,7 +32,7 @@ export default function Card(props) {
             }
         });
     })
-    // console.log(props)
+
     return (
         <div className={styles.pokemonCard} >
             {

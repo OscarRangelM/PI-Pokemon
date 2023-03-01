@@ -1,12 +1,11 @@
 import styles from './home.module.css';
 import React from 'react';
 import Card from '../Card/Card.jsx';
-import Nav from '../Nav/Nav.jsx'
+
 
 import { getPokemons } from '../../redux/actions/index.js'
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { }
 
 /* 
 HOME PAGE | la página principal de tu SPA debe contener:
@@ -42,7 +41,7 @@ export default function Home() {
 
     return (
         <div className={styles.divHome} >
-            <Nav />
+            
             <ul>
                 <div className={styles.divCards}>
                     {( typeof(pokemon) === 'object' && pokemon.length !== 0 )? pokemon.map((c) => {
