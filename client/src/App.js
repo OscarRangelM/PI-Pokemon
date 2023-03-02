@@ -1,6 +1,7 @@
 import './App.css';
-import React from 'react';
+import React /* { useEffect, useState } */ from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
 
 // Here the components are imported
 import Landing from './components/LandingPage/Landing.jsx';

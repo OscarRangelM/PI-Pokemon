@@ -2,10 +2,7 @@ import styles from './home.module.css';
 import React from 'react';
 import Card from '../Card/Card.jsx';
 
-
-import { getPokemons, getPokemonsAPI } from '../../redux/actions/index.js'
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 /* 
 HOME PAGE | la página principal de tu SPA debe contener:
@@ -27,21 +24,16 @@ Ordenamiento: debe funcionar combinado con el/los filtro/s.
 */
 export default function Home() {
 
-    const dispatch = useDispatch();
     const pokemon = useSelector(state => state.pokemon);
 
-    console.log(typeof(pokemon[0]))
-
-    useEffect(() => {
-        dispatch(getPokemonsAPI())
-    }, [dispatch])
+    console.log(pokemon)
 
     return (
         <div className={styles.divHome} >
-            
+
             <ul>
                 <div className={styles.divCards}>
-                    {( typeof(pokemon) === 'object' && pokemon.length !== 0 )? pokemon.map((c) => {
+                    {(typeof (pokemon) === 'object' && pokemon.length !== 0) ? pokemon.map((c) => {
                         return (<Card
                             key={c.id}
                             id={c.id}
@@ -50,7 +42,7 @@ export default function Home() {
                             types={c.Types}
                         // onClose={() => props.onClose(c.id)}
                         />)
-                    }) : (<h1>Oops! there is no pokemon around here</h1> ) }
+                    }) : (<h1>Oops! there is no pokemon around here</h1>)}
                 </div>
             </ul>
         </div>

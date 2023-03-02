@@ -8,6 +8,7 @@ import {
     CREATE_POKEMON,
     FILTER_AZ,
     FILTER_ATTK,
+    SEARCH_POKEMON,
 } from "../actions/index.js";
 
 const initialState = {
@@ -71,6 +72,13 @@ const rootReducer = (state = initialState, action) => {
                 pokemon: [...state.pokemon,
                 action.payload],
             };
+
+        case SEARCH_POKEMON:
+            console.log(action.payload)
+            return {
+                ...state,
+                pokemon: action.payload,
+            }
 
         default:
             return state;

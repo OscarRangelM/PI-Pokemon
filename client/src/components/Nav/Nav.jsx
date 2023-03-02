@@ -1,13 +1,71 @@
 import styles from './nav.module.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchPokemon, getPokemonsAPI, getPokemons } from '../../redux/actions/index.js'
 
 export default function Nav(props) {
-    
-    const location = useLocation();
 
-    return location.pathname === '/favorites' ?  (
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const [pokemon, setPokemon] = useState('');
+
+    const [searchMount, setSearchMount] = useState(false);
+    const [defaultA, setDefaultA] = useState(true);
+    const [datab, setDatab] = useState(false);
+
+    function handleInput(event) {
+        setPokemon(event.target.value);
+    }
+
+    function handleApi() {
+        setSearchMount(false);
+        setDefaultA(true);
+        setDatab(false);
+    }
+    function handleDB() {
+        setSearchMount(false);
+        setDefaultA(false);
+        setDatab(true);
+    }
+
+    const handleSearch = () => {
+        console.log('si ejecuto esta acción')
+        setSearchMount(true);
+        setDefaultA(false);
+        setDatab(false);
+    }
+
+    useEffect(() => { // Busqueda
+        if (searchMount) {
+            dispatch(searchPokemon(pokemon));
+            setSearchMount(false);
+            setDefaultA(false);
+            setDatab(false);
+        }
+    }, [dispatch, pokemon, searchMount]);
+
+    useEffect(() => { // default
+        if (defaultA) {
+            dispatch(getPokemonsAPI())
+            setSearchMount(false);
+            setDefaultA(false);
+            setDatab(false);
+        }
+    }, [dispatch, defaultA])
+
+    useEffect(() => { // pokemon db
+        if (datab) {
+            dispatch(getPokemons())
+            setSearchMount(false);
+            setDefaultA(false);
+            setDatab(false);
+        }
+    }, [dispatch, datab]);
+
+    return location.pathname === '/favorites' ? (
         <div className={styles.divNav} >
             <nav className={styles.navSearch}>
                 <ul className={styles.navUl}>
@@ -53,8 +111,12 @@ export default function Nav(props) {
                             type='search'
                             placeholder='Ex: Charmander'
                             className={styles.inpSearch}
+                            onChange={(e) => handleInput(e)}
+                            value={pokemon}
                         />
-                        <button className={styles.searchBttn}>Search</button>
+                        <button className={styles.searchBttn}
+                            onClick={handleSearch}
+                        >Search</button>
                     </li>
                     <li>
                         <select
@@ -81,16 +143,12 @@ export default function Nav(props) {
                         </button>
                     </li>
                     <li>
-                        <NavLink to='/api' >
-                            <button className={styles.filterApi}>
-                                API
-                            </button>
-                        </NavLink>
-                        <NavLink to='/db' >
-                            <button className={styles.filterDB}>
-                                DB
-                            </button>
-                        </NavLink>
+                        <button className={styles.filterApi} onClick={handleApi}>
+                            API
+                        </button>
+                        <button className={styles.filterDB} onClick={handleDB}>
+                            DB
+                        </button>
                     </li>
                     <li>
                         <NavLink to='/favorites' >

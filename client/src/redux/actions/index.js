@@ -10,6 +10,7 @@ export const FIND_POKEMON = 'FIND_POKEMON';
 export const FILTER_AZ = 'FILTER_AZ';
 export const FILTER_ATTK = 'FILTER_ATTK';
 export const CREATE_POKEMON = 'CREATE_POKEMON';
+export const SEARCH_POKEMON = 'SEARCH_POKEMON';
 
 
 export const getPokemons = () => {
@@ -63,6 +64,22 @@ export const filterAZ = () => {
 
 export const filterATTK = () => {
     return {}
+}
+
+export const searchPokemon = (pokemonId) => {
+    return async () => {
+        try {
+            const pokemon = await axios.get(`http://localhost:3001/pokemons?name=${pokemonId.toLowerCase()}`)
+                .then(result => result.data)
+                .catch(error => error);
+            return {
+                type: SEARCH_POKEMON,
+                payload: pokemon,
+            }
+        } catch (error) {
+            return error
+        }
+    }
 }
 
 export const addFavorite = (pokemon) => {
